@@ -7,7 +7,7 @@ const ContextProvider = (props) => {
 
     const [input, setInput] = useState("")
     const [recentPrompt, setRecentPrompt] = useState("")
-    const [previousPrompt, setPreviousPrompt] = useState([])
+    const [previousPrompts, setPreviousPrompts] = useState([])
     const [showResult, setShowResult] = useState(false)
     const [loading, setLoading] = useState(false)
     const [resultData, setResultData] = useState("")
@@ -23,6 +23,7 @@ const ContextProvider = (props) => {
         setLoading(true)
         setShowResult(true)
         setRecentPrompt(input)
+        setPreviousPrompts(prev => [...prev, input])
         const response = await run(input)
         let responseArray = response.split("**")
         let newResponse
@@ -50,8 +51,8 @@ const ContextProvider = (props) => {
     setInput,
     recentPrompt,
     setRecentPrompt,
-    previousPrompt,
-    setPreviousPrompt,
+    previousPrompts,
+    setPreviousPrompts,
     showResult,
     setShowResult,
     loading,
