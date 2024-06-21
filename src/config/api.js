@@ -43,6 +43,7 @@ import {
       // Ensure result is properly formatted
       if (result && result.response) {
         console.log(result.response.text());
+        return result.response.text()
       } else {
         console.error("Unexpected response format:", result);
       }
