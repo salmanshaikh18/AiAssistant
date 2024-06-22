@@ -122,6 +122,11 @@ const Main = () => {
           <div className="search-box flex justify-between items-center my-4">
             <input
               onChange={(e) => setInput(e.target.value)}
+              onKeyUp={(e) => {
+                if (e.key === "Enter") {
+                  onSent();
+                }
+              }}
               value={input}
               type="text"
               className="py-4 px-6 border-none outline-none w-full text-white bg-[#1E1F20] rounded-l-full"
