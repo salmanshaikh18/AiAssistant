@@ -7,6 +7,7 @@ import { TiMessage } from "react-icons/ti";
 import { BiPhotoAlbum } from "react-icons/bi";
 import { GrGallery } from "react-icons/gr";
 import { Context } from "../../context/Context";
+import MarkdownPreview from '@uiw/react-markdown-preview'
 import "./Main.css";
 
 const Main = () => {
@@ -88,7 +89,7 @@ const Main = () => {
                 />
                 <p className="mt-1 sm:mt-2">{recentPrompt}</p>
               </div>
-              <div className="result-data bg-[#2F2F2F] rounded-lg flex items-start ml-2 mt-2 sm:mt-6 sm:p-2 gap-1 p-1 pr-1 mr-2 sm:pr-8 sm:gap-[20px] justify-start">
+              <div className="result-data bg-[#2F2F2F] rounded-lg flex items-start ml-2 mt-2 sm:mt-6 sm:p-2 gap-1 p-1 pr-1 mr-2 sm:gap-[10px] justify-start">
                 <img className="w-[30px] sm:w-[40px]" src={assets.gemini_icon} alt="" />
                 {loading ? (
                   <div className="loader p-2 w-full flex flex-col gap-[10px]">
@@ -118,7 +119,8 @@ const Main = () => {
                     />
                   </div>
                 ) : (
-                  <p className="text-[17px] pt-1 font-light" dangerouslySetInnerHTML={{ __html: resultData }}></p>
+                  // <p className="text-[17px] pt-1 font-light" dangerouslySetInnerHTML={{ __html: resultData }}></p>
+                  <MarkdownPreview source={resultData} className="bg-[#2F2F2F] text-zinc-200 text-[17px] pt-1 font-light rounded-lg" />
                 )}
                 {/* <p dangerouslySetInnerHTML={{__html:resultData}}></p> */}
               </div>
