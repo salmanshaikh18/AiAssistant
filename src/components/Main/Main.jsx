@@ -32,19 +32,19 @@ const Main = () => {
         <img className="w-[40px] rounded-[50%]" src={assets.user_icon} alt="" />
       </div>
       <div className="main-container max-w-[900px] m-auto">
-        <div className="h-[72vh]">
+        <div className="min-h-[72vh]">
           {!showResult ? (
             <>
               {" "}
-              <div className="greet mx-[50px] font-medium p-[20px] text-[#444746]">
+              <div className="greet text-center sm:text-start sm:mx-[50px] font-medium p-[20px] pt-[40px] text-[#444746]">
                 <p>
-                  <span style={gradient} className="text-6xl">
+                  <span style={gradient} className="sm:text-6xl text-5xl">
                     Hello, Dev.
                   </span>
                 </p>
-                <p className="text-6xl">How can I help you today?</p>
+                <p className="text-4xl sm:text-6xl leading-8  mt-2">How can I help you today?</p>
               </div>
-              <div className="cards flex flex-wrap justify-center items-center gap-[15px] p-[20px] mt-8">
+              <div className="cards flex flex-wrap justify-center items-center gap-[15px] p-[20px] mt-4">
                 <div className="card bg-[#1E1F20] hover:bg-[#393B3D] transition-all ease-in-out duration-300 rounded-2xl p-4 flex flex-col items-end justify-between gap-8 w-[200px] h-[200px] cursor-pointer">
                   <p>
                     Suggest beautiful places to see on an upcoming road trip
@@ -72,18 +72,18 @@ const Main = () => {
             </>
           ) : (
             <div className="result py-[5%] max-h-[72vh] overflow-y-scroll hide-scrollbar">
-              <div className="result-title mx-[40px] flex items-center gap-[20px]">
+              <div className="result-title bg-[#2F2F2F] rounded-lg p-2 mx-2 sm:mx-[10px] flex items-start gap-2 sm:gap-[20px]">
                 <img
-                  className="w-[40px] rounded-full"
+                  className="w-[30px] sm:w-[40px] rounded-full"
                   src={assets.user_icon}
                   alt=""
                 />
-                <p>{recentPrompt}</p>
+                <p className="mt-1 sm:mt-2">{recentPrompt}</p>
               </div>
-              <div className="result-data flex items-start ml-10 mt-6 gap-[20px]">
-                <img className="w-[40px]" src={assets.gemini_icon} alt="" />
+              <div className="result-data bg-[#2F2F2F] rounded-lg flex items-start ml-2 mt-2 sm:mt-6 p-2 gap-1 pr-1 mr-2 sm:pr-0 sm:gap-[20px] justify-start">
+                <img className="w-[30px] sm:w-[40px]" src={assets.gemini_icon} alt="" />
                 {loading ? (
-                  <div className="loader w-full flex flex-col gap-[10px]">
+                  <div className="loader p-2 w-full flex flex-col gap-[10px]">
                     <hr
                       className="rounded-[4px] h-[20px] border-none bg-[f6f7f8]"
                       style={{
@@ -110,7 +110,7 @@ const Main = () => {
                     />
                   </div>
                 ) : (
-                  <p className="text-[17px] font-light" dangerouslySetInnerHTML={{ __html: resultData }}></p>
+                  <p className="text-[17px] pt-1 font-light" dangerouslySetInnerHTML={{ __html: resultData }}></p>
                 )}
                 {/* <p dangerouslySetInnerHTML={{__html:resultData}}></p> */}
               </div>
@@ -129,15 +129,12 @@ const Main = () => {
               }}
               value={input}
               type="text"
-              className="py-4 px-6 border-none outline-none w-full text-white bg-[#1E1F20] rounded-l-full"
+              className="py-4 px-6 border-none outline-none w-full text-white bg-[#1E1F20] rounded-l-full ml-2 sm:ml-0"
               placeholder="Enter a prompt here..."
             />
-            <div className="flex text-2xl gap-4 bg-[#1E1F20] py-4 px-6 rounded-r-full">
-              {/* <img src={assets.gallery_icon} alt="" /> */}
-              <GrGallery className="cursor-pointer" />
-              {/* <img src={assets.mic_icon} alt="" /> */}
-              <FaMicrophone className="cursor-pointer" />
-              {/* <img src={assets.send_icon} alt="" /> */}
+            <div className="flex text-2xl gap-4 bg-[#1E1F20] py-4 px-6 mr-2 sm:mr-0 rounded-r-full">
+              {/* <GrGallery className="cursor-pointer" /> */}
+              {/* <FaMicrophone className="cursor-pointer" /> */}
               <IoSend onClick={() => onSent()} className="cursor-pointer" />
             </div>
           </div>
