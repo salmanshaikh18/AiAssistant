@@ -80,7 +80,7 @@ const Main = () => {
                 />
                 <p className="mt-1 sm:mt-2">{recentPrompt}</p>
               </div>
-              <div className="result-data bg-[#2F2F2F] rounded-lg flex items-start ml-2 mt-2 sm:mt-6 p-2 gap-1 pr-1 mr-2 sm:pr-0 sm:gap-[20px] justify-start">
+              <div className="result-data bg-[#2F2F2F] rounded-lg flex items-start ml-2 mt-2 sm:mt-6 sm:p-2 gap-1 p-1 pr-1 mr-2 sm:pr-8 sm:gap-[20px] justify-start">
                 <img className="w-[30px] sm:w-[40px]" src={assets.gemini_icon} alt="" />
                 {loading ? (
                   <div className="loader p-2 w-full flex flex-col gap-[10px]">
