@@ -10,7 +10,12 @@ import { Context } from "../../context/Context";
 const SideBar = () => {
   const [extended, setExtended] = useState(false);
 
-  const { onSent, previousPrompts, sestRecentPrompt } = useContext(Context);
+  const { onSent, previousPrompts, setRecentPrompt, newChat } = useContext(Context);
+
+  const loadPrompt = async (prompt) => {
+    setRecentPrompt(prompt);
+    await onSent(prompt);
+  };
 
   return (
     <div className="sidebar bg-zinc-900 text-white min-h-[100vh] inline-flex flex-col justify-between px-2 sm:px-4 py-[15px]">
@@ -20,7 +25,7 @@ const SideBar = () => {
           onClick={() => setExtended((prev) => !prev)}
           className="menu mb-10 mt-[4px] ml-2  block cursor-pointer text-[24px]"
         />
-        <div className="new-chat text-white bg-zinc-800 mt-[10px] inline-flex items-center gap-[10px] rounded-[50px] text-[14px] cursor-pointer p-2 sm:px-6 hover:bg-[#393B3D] transition-all ease-in-out duration-300">
+        <div onClick={() => newChat()} className="new-chat text-white bg-zinc-800 mt-[10px] inline-flex items-center gap-[10px] rounded-[50px] text-[14px] cursor-pointer p-2 sm:px-6 hover:bg-[#393B3D] transition-all ease-in-out duration-300">
           {/* <img className='w-[20px]' src={assets.plus_icon} alt="" /> */}
           <IoIosAdd className="text-[30px] text-zinc-300" />
           {extended ? <p>New Chat</p> : null}
@@ -30,10 +35,13 @@ const SideBar = () => {
             <p className="recent-title mt-[30px] mb-[20px]">Recent</p>
             {previousPrompts.map((item, index) => {
               return (
-                <div className="recent-entry bg-[#004A77] transition-all ease-in-out duration-300 hover:bg-[#112f42] text-white flex items-center px-6 py-2 gap-[10px] cursor-pointer rounded-[50px] justify-center my-1">
+                <div
+                  onClick={() => loadPrompt(item)}
+                  className="recent-entry bg-[#004A77] transition-all ease-in-out duration-300 hover:bg-[#112f42] text-white flex items-center px-6 py-2 gap-[10px] cursor-pointer rounded-[50px] justify-center my-1"
+                >
                   {/* <img className='text-white w-[20px]' src={assets.message_icon} alt="" /> */}
                   <FaRegMessage className="text-[20px]" />
-                  <p className="text-sm w-full">{item}</p>
+                  <p className="text-sm w-full">{item.slice(0, 18)}...</p>
                 </div>
               );
             })}
