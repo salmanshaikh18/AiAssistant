@@ -7,3 +7,16 @@
   margin: 0;
   box-sizing: border-box;
 } */
+
+#root {
+  animation: fadeIn 1.5s;
+}
+
+@keyframes fadeIn {
+  0% {
+    opacity: 0.9;
+  }
+  100% {
+    opacity: 1;
+  }
+}
