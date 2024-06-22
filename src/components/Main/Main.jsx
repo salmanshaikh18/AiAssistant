@@ -18,6 +18,8 @@ const Main = () => {
     resultData,
     setInput,
     input,
+    setResultData,
+    setRecentPrompt
   } = useContext(Context);
 
   const gradient = {
@@ -25,6 +27,12 @@ const Main = () => {
     WebkitBackgroundClip: "text",
     WebkitTextFillColor: "transparent",
   };
+
+  const handleCard = (query) => {
+    setRecentPrompt(query)
+    setInput(query)
+    onSent(query)
+  }
   return (
     <div className="main flex-1 min-h-screen overflow-hidden relative bg-[#131314] text-zinc-200">
       <div className="nav flex items-center justify-between text-[22px] p-[20px] ">
@@ -45,25 +53,25 @@ const Main = () => {
                 <p className="text-4xl sm:text-6xl leading-8  mt-2">How can I help you today?</p>
               </div>
               <div className="cards flex flex-wrap justify-center items-center gap-[15px] p-[20px] mt-4">
-                <div className="card bg-[#1E1F20] hover:bg-[#393B3D] transition-all ease-in-out duration-300 rounded-2xl p-4 flex flex-col items-end justify-between gap-8 w-[200px] h-[200px] cursor-pointer">
+                <div onClick={() => handleCard("Suggest beautiful places to see on an upcoming road trip")} className="card bg-[#1E1F20] hover:bg-[#393B3D] transition-all ease-in-out duration-300 rounded-2xl p-4 flex flex-col items-end justify-between gap-8 w-[200px] h-[200px] cursor-pointer">
                   <p>
                     Suggest beautiful places to see on an upcoming road trip
                   </p>
                   {/* <img src={assets.compass_icon} alt="" /> */}
                   <FaRegCompass className=" bg-zinc-900 w-[40px] h-[40px] p-2 rounded-full" />
                 </div>
-                <div className="card bg-[#1E1F20] rounded-2xl p-4 flex flex-col items-end justify-between gap-8 w-[200px] h-[200px] hover:bg-[#393B3D] transition-all ease-in-out duration-300 cursor-pointer">
+                <div onClick={() => handleCard("Briefly summarize this concept: urban planning")} className="card bg-[#1E1F20] rounded-2xl p-4 flex flex-col items-end justify-between gap-8 w-[200px] h-[200px] hover:bg-[#393B3D] transition-all ease-in-out duration-300 cursor-pointer">
                   <p>Briefly summarize this concept: urban planning</p>
                   {/* <img src={assets.bulb_icon} alt="" /> */}
                   <IoBulbOutline className="bg-zinc-900 w-[40px] h-[40px] p-2 rounded-full" />
                 </div>
-                <div className="card bg-[#1E1F20] rounded-2xl p-4 flex flex-col items-end justify-between gap-8 w-[200px] h-[200px] hover:bg-[#393B3D] transition-all ease-in-out duration-300 cursor-pointer">
+                <div onClick={() => handleCard("Brainstorm team bonding activities for our work retreat")} className="card bg-[#1E1F20] rounded-2xl p-4 flex flex-col items-end justify-between gap-8 w-[200px] h-[200px] hover:bg-[#393B3D] transition-all ease-in-out duration-300 cursor-pointer">
                   <p>Brainstorm team bonding activities for our work retreat</p>
                   {/* <img src={assets.message_icon} alt="" /> */}
                   {/* <FaRegMessage className="text-[4px] bg-zinc-900 w-[40px] h-[40px] p-2 rounded-full" /> */}
                   <TiMessage className=" bg-zinc-900 w-[40px] h-[40px] p-2 rounded-full" />
                 </div>
-                <div className="card bg-[#1E1F20] rounded-2xl p-4 flex flex-col items-end justify-between gap-8 w-[200px] h-[200px] hover:bg-[#393B3D] transition-all ease-in-out duration-300 cursor-pointer">
+                <div onClick={() => handleCard("Tell me about React js and React native")} className="card bg-[#1E1F20] rounded-2xl p-4 flex flex-col items-end justify-between gap-8 w-[200px] h-[200px] hover:bg-[#393B3D] transition-all ease-in-out duration-300 cursor-pointer">
                   <p>Tell me about React js and React native</p>
                   {/* <img src={assets.code_icon} alt="" /> */}
                   <FaCode className=" bg-zinc-900 w-[40px] h-[40px] p-2 rounded-full" />
